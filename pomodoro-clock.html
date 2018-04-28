@@ -1,0 +1,90 @@
+<html lang="pl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Projektowanie i programowanie responsywnych stron internetowych">
+    <meta name="keywords" content="Patryk Kiedrowski, Kiedrowski, Front-End, Web developer, strona internetowa, responsywna, mobilna, strona">
+    <meta name="theme-color" content="#7CC6FE" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <meta property="og:locale" content="pl_PL">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Patryk Kiedrowski - Front-End Developer">
+    <meta property="og:description" content="Projektowanie i programowanie responsywnych stron internetowych">
+    <link rel="icon" href="#" />
+
+    <title>Patryk Kiedrowski &ndash; Front-End Developer</title>
+    <link rel="stylesheet" type="text/css" href="pomodoro-clock.css">
+    <link href="https://fonts.googleapis.com/css?family=Play:400,700&amp;subset=latin-ext" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <div class="app-header">
+        <h1>pomodoro clock</h1>
+      </div>
+
+      <div id="work-length-container">
+        <div id="work-length-header" class="section-header">
+          <h2>set work length</h2>
+        </div>
+
+        <div id="work-length" class="adjust">
+          <h3>
+            <span id="work-subtract" class="minus">-</span>
+            <span id="current-break-length" class="current"> 25 </span>
+            <span id="work-add" class="plus">+</span></h3>
+        </div>
+      </div>
+
+      <div id="break-length-container">
+        <div id="break-header" class="section-header">
+          <h2>set break length</h2>
+        </div>
+
+        <div id="break-length" class="adjust">
+          <h3>
+            <span id="break-subtract" class="minus">-</span>
+            <span id="current-break-length" class="current"> 5 </span>
+            <span id="work-add" class="plus">+</span></h3>
+        </div>
+      </div>
+
+      <div id="work-left-container">
+        <div id="work-left-header" class="section-header">
+          <h2>work left</h2>
+        </div>
+
+        <div id="work-left" class="progress-bar">
+          <div id="work-left-bar">
+            <h2 class="time">12:00</h2>
+          </div>
+        </div>
+      </div>
+
+      <div id="break-left-container">
+        <div id="break-left-header" class="section-header">
+          <h2>break left</h2>
+        </div>
+
+        <div id="break-left" class="progress-bar">
+          <div id="break-left-bar">
+            <h2 class="time">3:00</h2>
+          </div>
+        </div>
+      </div>
+
+
+      <div id="start-stop-button">
+        <button class="start-stop">STOP</button>
+      </div>
+
+    </div>
+
+
+
+    <script src="../js/jquery-3.3.1.js"></script>
+    <script src="pomodoro-clock.js"></script>
+  </body>
+</html>
