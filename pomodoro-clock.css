@@ -12,6 +12,7 @@ body
   text-align: center;
   box-sizing: border-box;
   user-select: none;
+  letter-spacing: 1px;
 }
 
 h1,h2,h3
@@ -79,6 +80,11 @@ h1,h2,h3
   background: #83AD47;
 }
 
+.minus:active, .plus:active
+{
+  transform: scale(0.95);
+}
+
 .minus:hover, .plus:hover
 {
   cursor: pointer;
@@ -120,16 +126,22 @@ h1,h2,h3
 {
   font-family: 'Play', sans-serif;
   font-size: 24px;
-  line-height: 24px;
   background: #3C91E6;
   color: #FAFFFD;
   border: none;
-  padding: 2% 6%;
-  box-sizing: content-box;
+  width: 33%;
+  height: 35px;
+  display: block;
+  margin: 0 auto;
 }
 
 .start-stop:hover
 {
   cursor: pointer;
   background: #3277BD;
+}
+
+.start-stop:active
+{
+  transform: scale(0.98);
 }
