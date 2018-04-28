@@ -32,9 +32,9 @@
 
         <div id="work-length" class="adjust">
           <h3>
-            <span id="work-subtract" class="minus">-</span>
-            <span id="current-break-length" class="current"> 25 </span>
-            <span id="work-add" class="plus">+</span></h3>
+            <span id="work-subtract" class="minus" onclick="decreaseWork()">-</span>
+            <span id="current-work-length" class="current"></span>
+            <span id="work-add" class="plus" onclick="increaseWork()">+</span></h3>
         </div>
       </div>
 
@@ -45,9 +45,9 @@
 
         <div id="break-length" class="adjust">
           <h3>
-            <span id="break-subtract" class="minus">-</span>
-            <span id="current-break-length" class="current"> 5 </span>
-            <span id="work-add" class="plus">+</span></h3>
+            <span id="break-subtract" class="minus" onclick="decreaseBreak()">-</span>
+            <span id="current-break-length" class="current"></span>
+            <span id="work-add" class="plus" onclick="increaseBreak()">+</span></h3>
         </div>
       </div>
 
@@ -58,7 +58,7 @@
 
         <div id="work-left" class="progress-bar">
           <div id="work-left-bar">
-            <h2 class="time">12:00</h2>
+            <h2 class="time" id="work-time">12:00</h2>
           </div>
         </div>
       </div>
@@ -70,14 +70,14 @@
 
         <div id="break-left" class="progress-bar">
           <div id="break-left-bar">
-            <h2 class="time">3:00</h2>
+            <h2 class="time" id="break-time">3:00</h2>
           </div>
         </div>
       </div>
 
 
       <div id="start-stop-button">
-        <button class="start-stop">STOP</button>
+        <button class="start-stop" id="button" onclick="state()">START</button>
       </div>
 
     </div>

@@ -98,6 +98,7 @@ h1,h2,h3
   padding: 2px;
   margin: 0 auto;
   position: relative;
+  text-shadow: 0px 0px 3px rgba(0,0,0,0.7);
 }
 
 .time
@@ -110,16 +111,21 @@ h1,h2,h3
 
 #work-left-bar
 {
-  width: 40%;
+  width: 100%;
   background: #FA824C;
   height: 35px;
 }
 
 #break-left-bar
 {
-  width: 20%;
+  width: 100%;
   background: #9FD356;
   height: 35px;
+}
+
+#start-stop-button
+{
+  margin-top: 40px;
 }
 
 .start-stop
@@ -133,6 +139,7 @@ h1,h2,h3
   height: 35px;
   display: block;
   margin: 0 auto;
+  text-shadow: 0px 0px 3px rgba(0,0,0,0.7);
 }
 
 .start-stop:hover
