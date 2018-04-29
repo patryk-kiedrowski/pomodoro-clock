@@ -1,7 +1,8 @@
 var workLength = 25;
 var breakLength = 5;
-var initialWorkLength = 0;
-var initialbreakLength = 0;
+var initialWorkLength = 25;
+var initialbreakLength = 5;
+var buttonClickEvents = 0;
 var running = false;
 var workBarProgress = workLength;
 var breakBarProgress = breakLength;
@@ -32,47 +33,29 @@ function lengthControl(length)
 function increaseWork()
 {
   workLength++;
-  workLength = lengthControl(workLength);
+  workLength = initialWorkLength = lengthControl(workLength);
   printResults();
 }
 
 function decreaseWork()
 {
   workLength--;
-  workLength = lengthControl(workLength);
+  workLength = initialWorkLength = lengthControl(workLength);
   printResults();
 }
 
 function increaseBreak()
 {
   breakLength++;
-  breakLength = lengthControl(breakLength);
+  breakLength = initialBreakLength = lengthControl(breakLength);
   printResults();
 }
 
 function decreaseBreak()
 {
   breakLength--;
-  breakLength = lengthControl(breakLength);
+  breakLength = initialBreakLength = lengthControl(breakLength);
   printResults();
-}
-
-function reduceWorkBar()
-{
-  workBarProgress--;
-  workLength--;
-  document.getElementById("work-left-bar").style.width = workLength/initialWorkLength*100 + "%";
-  document.getElementById("work-time").innerHTML = Math.floor(workLength/60) + ":" + workLength%60;
-  console.log(workBarProgress);
-}
-
-function reduceBreakBar()
-{
-  breakBarProgress--;
-  breakLength--;
-  document.getElementById("break-left-bar").style.width = breakLength/initialBreakLength*100 + "%";
-  document.getElementById("break-time").innerHTML = Math.floor(breakLength/60) + ":" + breakLength%60;
-  console.log(breakBarProgress);
 }
 
 function whichBarToReduce()
@@ -83,7 +66,7 @@ function whichBarToReduce()
   if (workBarProgress < 1 && workState == true)
   {
     workState = false;
-    workBarProgress = workLength;
+    workBarProgress = workLength = initialWorkLength;
     breakState = true;
   }
 
@@ -93,9 +76,33 @@ function whichBarToReduce()
   if (breakBarProgress < 1 && breakState == true)
   {
     breakState = false;
-    breakBarProgress = breakLength;
+    breakBarProgress = breakLength = initialBreakLength;
     workState = true;
   }
+}
+
+function reduceWorkBar()
+{
+  workBarProgress--;
+  workLength--;
+  document.getElementById("work-left-bar").style.width = workLength/initialWorkLength*100 + "%";
+  printTime(workLength, "work-time");
+}
+
+function reduceBreakBar()
+{
+  breakBarProgress--;
+  breakLength--;
+  document.getElementById("break-left-bar").style.width = breakLength/initialBreakLength*100 + "%";
+  printTime(breakLength, "break-time");
+}
+
+function printTime(time, target)
+{
+  if (Math.floor(time%60) < 10)
+    document.getElementById(target).innerHTML = Math.floor(time/60) + ":0" + time%60;
+
+  else document.getElementById(target).innerHTML = Math.floor(time/60) + ":" + time%60;
 }
 
 function startCounting()
@@ -112,14 +119,27 @@ function stopCounting()
   timer = null
 }
 
+function setPreviousValues()
+{
+  workLength = initialWorkLength / 60;
+  breakLength = initialBreakLength / 60;
+}
+
 function state()
 {
+  buttonClickEvents++;
+
+  if (buttonClickEvents%2 == 0)
+    valuesSet = false;
+
   if (valuesSet == false)
   {
-    valuesSet = true;
     workLength = workBarProgress = initialWorkLength = document.getElementById("current-work-length").innerHTML * 60;
     breakLength = breakBarProgress = initialBreakLength = document.getElementById("current-break-length").innerHTML * 60;
+    valuesSet = true;
   }
+
+  if (buttonClickEvents)
 
   if (running == false)
   {
@@ -133,5 +153,6 @@ function state()
     running = false;
     document.getElementById("button").innerHTML = "START";
     stopCounting();
+    setPreviousValues();
   }
 }
