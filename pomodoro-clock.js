@@ -32,30 +32,42 @@ function lengthControl(length)
 
 function increaseWork()
 {
-  workLength++;
-  workLength = initialWorkLength = lengthControl(workLength);
-  printResults();
+  if(!running)
+  {
+    workLength++;
+    workLength = initialWorkLength = lengthControl(workLength);
+    printResults();
+  }
 }
 
 function decreaseWork()
 {
-  workLength--;
-  workLength = initialWorkLength = lengthControl(workLength);
-  printResults();
+  if(!running)
+  {
+    workLength--;
+    workLength = initialWorkLength = lengthControl(workLength);
+    printResults();
+  }
 }
 
 function increaseBreak()
 {
-  breakLength++;
-  breakLength = initialBreakLength = lengthControl(breakLength);
-  printResults();
+  if(!running)
+  {
+    breakLength++;
+    breakLength = initialBreakLength = lengthControl(breakLength);
+    printResults();
+  }
 }
 
 function decreaseBreak()
 {
-  breakLength--;
-  breakLength = initialBreakLength = lengthControl(breakLength);
-  printResults();
+  if(!running)
+  {
+    breakLength--;
+    breakLength = initialBreakLength = lengthControl(breakLength);
+    printResults();
+  }
 }
 
 function whichBarToReduce()
