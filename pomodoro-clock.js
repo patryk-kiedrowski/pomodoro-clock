@@ -1,7 +1,7 @@
-var workLength = 1;                 //contains the duration of work session as the user sets it           [in minutes]
-var breakLength = 1;                //containts the duration of break session as the user sets it         [in minutes]
-var initialWorkLength = 1;          //contains the duration of work session SET by the user               [in minutes]
-var initialBreakLength = 1;         //contains the duration of work session SET by the user               [in minutes]
+var workLength = 25;                 //contains the duration of work session as the user sets it           [in minutes]
+var breakLength = 5;                //containts the duration of break session as the user sets it         [in minutes]
+var initialWorkLength = 25;          //contains the duration of work session SET by the user               [in minutes]
+var initialBreakLength = 5;         //contains the duration of work session SET by the user               [in minutes]
 var running = false;                //tracks whether the program is working
 var workProgress = workLength;      //contains the value of seconds left in the current work session      [in seconds]
 var breakProgress = breakLength;    //contains the value of seconds left in the current break session     [in seconds]
