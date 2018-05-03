@@ -1,14 +1,14 @@
-var workLength = 25;
-var breakLength = 5;
-var initialWorkLength = 25;
-var initialbreakLength = 5;
-var buttonClickEvents = 0;
-var running = false;
-var workBarProgress = workLength;
-var breakBarProgress = breakLength;
-var workState = true;
-var breakState = false;
-var valuesSet = false;
+var workLength = 1;                 //contains the duration of work session as the user sets it           [in minutes]
+var breakLength = 1;                //containts the duration of break session as the user sets it         [in minutes]
+var initialWorkLength = 1;          //contains the duration of work session SET by the user               [in minutes]
+var initialBreakLength = 1;         //contains the duration of work session SET by the user               [in minutes]
+var running = false;                //tracks whether the program is working
+var workProgress = workLength;      //contains the value of seconds left in the current work session      [in seconds]
+var breakProgress = breakLength;    //contains the value of seconds left in the current break session     [in seconds]
+var workState = true;               //checks whether the program is in the work session at the moment
+var breakState = false;             //checks whether the program is in the break session at the moment
+var workValueReset = true;          //checks where the user changed the duration of the current work session
+var breakValueReset = true;         //checks where the user changed the duration of the current break session
 var timer = null;
 
 $(document).ready(printResults());
@@ -32,81 +32,117 @@ function lengthControl(length)
 
 function increaseWork()
 {
+<<<<<<< HEAD
   if(!running)
   {
     workLength++;
     workLength = initialWorkLength = lengthControl(workLength);
+=======
+  if (running == false)
+  {
+    workLength++;
+    workLength = initialWorkLength = lengthControl(workLength);
+    workValueReset = true;
+>>>>>>> redesign
     printResults();
   }
 }
 
 function decreaseWork()
 {
+<<<<<<< HEAD
   if(!running)
   {
     workLength--;
     workLength = initialWorkLength = lengthControl(workLength);
+=======
+  if (running == false)
+  {
+    workLength--;
+    workLength = initialWorkLength = lengthControl(workLength);
+    workValueReset = true;
+>>>>>>> redesign
     printResults();
   }
 }
 
 function increaseBreak()
 {
+<<<<<<< HEAD
   if(!running)
   {
     breakLength++;
     breakLength = initialBreakLength = lengthControl(breakLength);
+=======
+  if (running == false)
+  {
+    breakLength++;
+    breakLength = initialBreakLength = lengthControl(breakLength);
+    breakValueReset = true;
+>>>>>>> redesign
     printResults();
   }
 }
 
 function decreaseBreak()
 {
+<<<<<<< HEAD
   if(!running)
   {
     breakLength--;
     breakLength = initialBreakLength = lengthControl(breakLength);
+=======
+  if (running == false)
+  {
+    breakLength--;
+    breakLength = initialBreakLength = lengthControl(breakLength);
+    breakValueReset = true;
+>>>>>>> redesign
     printResults();
   }
 }
 
 function whichBarToReduce()
 {
-  if (workBarProgress >= 1 && workState == true)
+  if (workProgress >= 1 && workState == true)
     return reduceWorkBar();
 
-  if (workBarProgress < 1 && workState == true)
-  {
-    workState = false;
-    workBarProgress = workLength = initialWorkLength;
-    breakState = true;
-  }
+  if (workProgress < 1 && workState == true)
+    return resetWorkBar();
 
-  if (breakBarProgress >= 1 && breakState == true)
+  if (breakProgress >= 1 && breakState == true)
     return reduceBreakBar();
 
-  if (breakBarProgress < 1 && breakState == true)
-  {
-    breakState = false;
-    breakBarProgress = breakLength = initialBreakLength;
-    workState = true;
-  }
+  if (breakProgress < 1 && breakState == true)
+    return resetBreakBar();
+}
+
+function resetWorkBar()
+{
+  workState = false;
+  workProgress = initialWorkLength*60;
+  breakState = true;
+}
+
+function resetBreakBar()
+{
+  breakState = false;
+  breakProgress = initialBreakLength*60;
+  workState = true;
 }
 
 function reduceWorkBar()
 {
-  workBarProgress--;
-  workLength--;
-  document.getElementById("work-left-bar").style.width = workLength/initialWorkLength*100 + "%";
-  printTime(workLength, "work-time");
+  workProgress--;
+  document.getElementById("work-left-bar").style.width = (workProgress/(initialWorkLength*60))*100 + "%";
+  printTime(workProgress, "work-time");
 }
 
 function reduceBreakBar()
 {
-  breakBarProgress--;
-  breakLength--;
-  document.getElementById("break-left-bar").style.width = breakLength/initialBreakLength*100 + "%";
-  printTime(breakLength, "break-time");
+  breakProgress--;
+  document.getElementById("break-left-bar").style.width = (breakProgress/(initialBreakLength*60))*100 + "%";
+  printTime(breakProgress, "break-time");
 }
 
 function printTime(time, target)
@@ -131,27 +167,19 @@ function stopCounting()
   timer = null
 }
 
-function setPreviousValues()
-{
-  workLength = initialWorkLength / 60;
-  breakLength = initialBreakLength / 60;
-}
-
 function state()
 {
-  buttonClickEvents++;
-
-  if (buttonClickEvents%2 == 0)
-    valuesSet = false;
-
-  if (valuesSet == false)
+  if (workValueReset == true)
   {
-    workLength = workBarProgress = initialWorkLength = document.getElementById("current-work-length").innerHTML * 60;
-    breakLength = breakBarProgress = initialBreakLength = document.getElementById("current-break-length").innerHTML * 60;
-    valuesSet = true;
+    workProgress = document.getElementById("current-work-length").innerHTML * 60;
+    workValueReset = false;
   }
 
-  if (buttonClickEvents)
+  if (breakValueReset == true)
+  {
+    breakProgress = document.getElementById("current-break-length").innerHTML * 60;
+    breakValueReset = false;
+  }
 
   if (running == false)
   {
@@ -165,6 +193,5 @@ function state()
     running = false;
     document.getElementById("button").innerHTML = "START";
     stopCounting();
-    setPreviousValues();
   }
 }
