@@ -23,7 +23,7 @@ h1,h2,h3
 .wrapper
 {
   display: block;
-  margin: 0 auto;
+  margin: 50px auto;
 }
 
 .app-header
