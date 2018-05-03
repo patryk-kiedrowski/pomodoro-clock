@@ -32,72 +32,44 @@ function lengthControl(length)
 
 function increaseWork()
 {
-<<<<<<< HEAD
-  if(!running)
-  {
-    workLength++;
-    workLength = initialWorkLength = lengthControl(workLength);
-=======
   if (running == false)
   {
     workLength++;
     workLength = initialWorkLength = lengthControl(workLength);
     workValueReset = true;
->>>>>>> redesign
     printResults();
   }
 }
 
 function decreaseWork()
 {
-<<<<<<< HEAD
-  if(!running)
-  {
-    workLength--;
-    workLength = initialWorkLength = lengthControl(workLength);
-=======
   if (running == false)
   {
     workLength--;
     workLength = initialWorkLength = lengthControl(workLength);
     workValueReset = true;
->>>>>>> redesign
     printResults();
   }
 }
 
 function increaseBreak()
 {
-<<<<<<< HEAD
-  if(!running)
-  {
-    breakLength++;
-    breakLength = initialBreakLength = lengthControl(breakLength);
-=======
   if (running == false)
   {
     breakLength++;
     breakLength = initialBreakLength = lengthControl(breakLength);
     breakValueReset = true;
->>>>>>> redesign
     printResults();
   }
 }
 
 function decreaseBreak()
 {
-<<<<<<< HEAD
-  if(!running)
-  {
-    breakLength--;
-    breakLength = initialBreakLength = lengthControl(breakLength);
-=======
   if (running == false)
   {
     breakLength--;
     breakLength = initialBreakLength = lengthControl(breakLength);
     breakValueReset = true;
->>>>>>> redesign
     printResults();
   }
 }
